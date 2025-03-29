@@ -23,8 +23,8 @@ app.use(express.urlencoded({ extended: false }));
 // middleware to create a session
 app.use(
   session({
-    secret: "SOMESECRET",
-    cookie: { httpOnly: false },
+    secret: "SOMESECRET", // insecure 1. using a hardcoded string - they can recreate the hash secret
+    cookie: { httpOnly: false }, // insecure - 2. misconfiguring cooking by allowing it to be programitically accessed
     resave: false,
     saveUninitialized: false,
   })

@@ -26,7 +26,7 @@ const User: Model<IUser> = mongoose.model<IUser>('User', userSchema);
 
 // Route to authenticate user (VULNERABLE TO NOSQL INJECTION)
 app.get('/userinfo', async (req: Request, res: Response) => {
-  const { username } = req.query;
+  const { username } = req.query; 
   console.log(username);
 
   // Vulnerable code: Directly using user-provided values in the query

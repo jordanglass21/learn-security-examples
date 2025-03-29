@@ -24,13 +24,13 @@ app.use(express.urlencoded({ extended: false }));
 // middleware to create a session with secure configuration
 app.use(
   session({
-    secret: `${secret}`,
-    cookie: {
-        httpOnly: true,
-        sameSite: true,
+    secret: `${secret}`, // secure - taking the scret from a command line argument
+    cookie: { 
+        httpOnly: true, // secure - programatically disbled
+        sameSite: true, // secure - when a request is sent to this server, the browser will only send the cookie if the request originated from the same site
     },
-    resave: false,
-    saveUninitialized: false
+    resave: false, // secure
+    saveUninitialized: false //secure
   })
 )
 

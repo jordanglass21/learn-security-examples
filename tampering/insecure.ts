@@ -40,8 +40,10 @@ app.post("/sensitive", (req: Request, res: Response) => {
 app.get("/", (req: Request, res: Response) => {
   let name = "Guest";
 
-  if (req.session.user) name = req.session.user;
+  if (req.session.user) name = req.session.user; 
 
+  // name is not sanitized, so it can be used for XSS attacks
+  // e.g. <script>alert('XSS')</script> will be executed in the browser
   res.send(`
   <h1>Welcome, ${name}</h1>
   <form action="/register" method="POST">
